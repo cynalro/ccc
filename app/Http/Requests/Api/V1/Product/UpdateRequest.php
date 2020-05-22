@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
             'name' => 'required',
             'sku' => 'unique:products,sku,'.$this->product->id.'|max:255',
             'price' => 'numeric',
+            'category_id' => 'exists:categories,id',
         ];
     }
 }
