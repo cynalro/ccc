@@ -52,11 +52,11 @@ export default class Products extends Component {
         <h3>cliente APIRest</h3>
         <hr/>
         <div>          
-          <button type="button" className="btn btn-primary col-md-3" data-toggle="modal" data-target="#productForm">
+          <button type="button" className="btn btn-primary col-md-3" onClick={()=>this.newProduct()}>
                 Crear Producto
           </button>
 
-          <a href={baseUrl+'categories'} class="btn btn-primary col-md-3 float-right" tabindex="-1" role="button" aria-disabled="true">Ver Categorias</a>
+          <a href={baseUrl+'categories'} className="btn btn-primary col-md-3 float-right" tabIndex="-1" role="button" aria-disabled="true">Ver Categorias</a>
 
           
         </div>
@@ -107,7 +107,7 @@ export default class Products extends Component {
                   </div>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={()=>this.changeStatuEdit()}>Cancelar</button>
                   {
                     this.state.edit?
                       <button type="button" className="btn btn-primary" onClick={()=>this.updateProduct()}>Actualizar</button>
@@ -118,10 +118,20 @@ export default class Products extends Component {
               </div>
             </div>
           </div>
-        </form>
+        </form>      
 
       </div>
     );
+  }
+
+  changeStatuEdit(){
+    this.setState({
+      name:'',
+      price:'',
+      sku:'',
+      category_id:0,
+      edit:false
+    })
   }
 
   renderProducts(){
@@ -173,6 +183,12 @@ export default class Products extends Component {
      })
   }
 
+  //Muestra el modal con el formulario para ingresar productos
+  newProduct(){
+    this.changeStatuEdit()
+    $("#productForm").modal("show");     
+  }
+
   //Muestra el modal con la infomacion del productos
   editProduct(data){
 
@@ -182,7 +198,7 @@ export default class Products extends Component {
       edit:true
     })
 
-    $("#productForm").modal("show");    
+    $("#productForm").modal("show");     
   }
 
   //actuliza la informacion de un producto

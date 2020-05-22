@@ -76847,12 +76847,13 @@ var Categories = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "cliente APIRest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary col-md-3",
-        "data-toggle": "modal",
-        "data-target": "#categoryForm"
+        onClick: function onClick() {
+          return _this2.newProduct();
+        }
       }, "Crear Categoria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: baseUrl + 'products',
-        "class": "btn btn-primary col-md-3 float-right",
-        tabindex: "-1",
+        className: "btn btn-primary col-md-3 float-right",
+        tabIndex: "-1",
         role: "button",
         "aria-disabled": "true"
       }, "Ver Productos")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -76967,6 +76968,24 @@ var Categories = /*#__PURE__*/function (_Component) {
       })["catch"](function (error) {
         alert("Error " + error);
       });
+    }
+  }, {
+    key: "changeStatuEdit",
+    value: function changeStatuEdit() {
+      this.setState({
+        name: '',
+        price: '',
+        sku: '',
+        category_id: 0,
+        edit: false
+      });
+    } //Muestra el modal con el formulario para ingresar productos
+
+  }, {
+    key: "newProduct",
+    value: function newProduct() {
+      this.changeStatuEdit();
+      $("#categoryForm").modal("show");
     }
   }, {
     key: "editCategory",
@@ -77169,12 +77188,13 @@ var Products = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "cliente APIRest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary col-md-3",
-        "data-toggle": "modal",
-        "data-target": "#productForm"
+        onClick: function onClick() {
+          return _this2.newProduct();
+        }
       }, "Crear Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: baseUrl + 'categories',
-        "class": "btn btn-primary col-md-3 float-right",
-        tabindex: "-1",
+        className: "btn btn-primary col-md-3 float-right",
+        tabIndex: "-1",
         role: "button",
         "aria-disabled": "true"
       }, "Ver Categorias")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -77248,7 +77268,10 @@ var Products = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-secondary",
-        "data-dismiss": "modal"
+        "data-dismiss": "modal",
+        onClick: function onClick() {
+          return _this2.changeStatuEdit();
+        }
       }, "Cancelar"), this.state.edit ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary",
@@ -77262,6 +77285,17 @@ var Products = /*#__PURE__*/function (_Component) {
           return _this2.addProduct();
         }
       }, "Guardar")))))));
+    }
+  }, {
+    key: "changeStatuEdit",
+    value: function changeStatuEdit() {
+      this.setState({
+        name: '',
+        price: '',
+        sku: '',
+        category_id: 0,
+        edit: false
+      });
     }
   }, {
     key: "renderProducts",
@@ -77326,6 +77360,13 @@ var Products = /*#__PURE__*/function (_Component) {
       })["catch"](function (error) {
         alert("Error " + error);
       });
+    } //Muestra el modal con el formulario para ingresar productos
+
+  }, {
+    key: "newProduct",
+    value: function newProduct() {
+      this.changeStatuEdit();
+      $("#productForm").modal("show");
     } //Muestra el modal con la infomacion del productos
 
   }, {

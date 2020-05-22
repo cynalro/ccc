@@ -31,10 +31,10 @@ export default class Categories extends Component {
         <h3>cliente APIRest</h3>
         <hr/>
         <div>          
-          <button type="button" className="btn btn-primary col-md-3" data-toggle="modal" data-target="#categoryForm">
+          <button type="button" className="btn btn-primary col-md-3" onClick={()=>this.newProduct()}>
                 Crear Categoria
           </button>
-          <a href={baseUrl+'products'} class="btn btn-primary col-md-3 float-right" tabindex="-1" role="button" aria-disabled="true">Ver Productos</a>
+          <a href={baseUrl+'products'} className="btn btn-primary col-md-3 float-right" tabIndex="-1" role="button" aria-disabled="true">Ver Productos</a>
         </div>
         <table className="table table-striped">
           <thead className="thead-dark">
@@ -117,6 +117,22 @@ export default class Categories extends Component {
      }).catch(error=>{
        alert("Error "+error)
      })
+  }
+
+  changeStatuEdit(){
+    this.setState({
+      name:'',
+      price:'',
+      sku:'',
+      category_id:0,
+      edit:false
+    })
+  }
+
+  //Muestra el modal con el formulario para ingresar productos
+  newProduct(){
+    this.changeStatuEdit()
+    $("#categoryForm").modal("show");     
   }
 
   editCategory(data){
